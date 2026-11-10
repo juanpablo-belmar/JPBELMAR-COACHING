@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Informe de actualización · Noviembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: columna de lectura de ~70ch con índice fijo a la izquierda en pantallas anchas; tablas a todo el ancho del contenido. Paleta de marca JPB: ónice, ámbar, azul ónice. */
+:root{
+  --bg:#F5F6F8;
+  --surface:#FFFFFF;
+  --ink:#121417;
+  --muted:#545B66;
+  --line:#DDE1E7;
+  --heading:#1B3A5C;
+  --accent:#E5A91E;
+  --accent-ink:#8A5E00;
+  --chip-ok:#E4F1E8; --chip-ok-ink:#1E5B33;
+  --chip-warn:#FBEFD3; --chip-warn-ink:#7A5200;
+  --font-display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0A0A; --surface:#13161B; --ink:#E9EBEE; --muted:#A3AAB5; --line:#262B33;
+    --heading:#9DBBDD; --accent:#E5A91E; --accent-ink:#F0BE4A;
+    --chip-ok:#16301F; --chip-ok-ink:#8FD3A5; --chip-warn:#33270B; --chip-warn-ink:#F0BE4A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0A0A; --surface:#13161B; --ink:#E9EBEE; --muted:#A3AAB5; --line:#262B33;
+  --heading:#9DBBDD; --accent:#E5A91E; --accent-ink:#F0BE4A;
+  --chip-ok:#16301F; --chip-ok-ink:#8FD3A5; --chip-warn:#33270B; --chip-warn-ink:#F0BE4A;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.6}
+a{color:var(--heading);text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}}
+nav.toc{position:sticky;top:24px;align-self:start;padding-top:40px;font-family:var(--font-display);font-size:14px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover{color:var(--heading)}
+a.back{font-family:var(--font-display);font-size:14px;font-weight:600;display:inline-block;margin-bottom:18px}
+nav.toc .toc-title{font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+@media (max-width:900px){nav.toc{position:static;padding-top:24px}nav.toc ol{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+main{padding:40px 0 80px;min-width:0}
+header.cover{border-bottom:3px solid var(--accent);padding-bottom:24px;margin-bottom:32px}
+.eyebrow{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 8px}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--heading);text-wrap:balance;line-height:1.2}
+h1{font-size:44px;font-weight:800;margin:0 0 12px;letter-spacing:-.01em}
+h2{font-size:30px;font-weight:800;margin:56px 0 12px;padding-top:8px}
+h3{font-size:22px;font-weight:700;margin:36px 0 8px}
+h4{font-size:18px;font-weight:700;margin:24px 0 6px;color:var(--ink)}
+.part{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--surface);background:var(--heading);display:inline-block;padding:4px 10px;border-radius:3px;margin-top:64px}
+p,li{max-width:70ch}
+.lede{font-size:20px;color:var(--muted);margin:0}
+.meta{font-family:var(--font-display);font-size:14px;color:var(--muted);margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 20px}
+ul,ol{padding-left:1.2em}
+li{margin:6px 0}
+.src{font-family:var(--font-display);font-size:13px;white-space:nowrap}
+.so{display:block;margin:10px 0 0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--surface);font-size:17px;max-width:70ch}
+.so ul{margin:6px 0 0}
+.so b{font-family:var(--font-display);font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-ink);display:block;margin-bottom:2px}
+.keys{counter-reset:k;list-style:none;padding:0;display:grid;gap:12px}
+.keys li{counter-increment:k;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px 14px 56px;position:relative;max-width:none}
+.keys li::before{content:counter(k);position:absolute;left:16px;top:12px;font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px}
+.tile .n{font-family:var(--font-display);font-weight:800;font-size:30px;color:var(--heading);font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .l{font-family:var(--font-display);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.35}
+.tablewrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:var(--font-display);font-size:14px;line-height:1.4}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-weight:700;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;background:var(--bg);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.date{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.chip{display:inline-block;font-family:var(--font-display);font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap;letter-spacing:.02em}
+.ok{background:var(--chip-ok);color:var(--chip-ok-ink)}
+.warn{background:var(--chip-warn);color:var(--chip-warn-ink)}
+.tag{display:inline-block;font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px;margin:2px 2px 0 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.filters button{font-family:var(--font-display);font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--heading);border-color:var(--heading);color:var(--surface)}
+.month td{background:var(--bg);font-weight:800;color:var(--heading);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.next{display:grid;gap:10px;list-style:none;padding:0}
+.next li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:12px 14px;max-width:none}
+.next .d{font-family:var(--font-display);font-weight:800;color:var(--heading);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.next li{grid-template-columns:minmax(0,1fr);gap:2px}h1{font-size:34px}h2{font-size:25px}body{font-size:17px}}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.box h4{margin-top:0}
+.box ul{margin:0}
+.note{font-size:16px;color:var(--muted)}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--font-display);font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Índice">
+  <div class="toc-title">Índice</div>
+  <ol>
+    <li><a href="#resumen">Lo clave del mes</a></li>
+    <li><a href="#proximas">Próximas fechas</a></li>
+    <li><a href="#empleo">A1 · Mercado laboral Chile</a></li>
+    <li><a href="#headhunting">A2 · Headhunting y outplacement</a></li>
+    <li><a href="#empleo-mundo">A3 · Empleo en el mundo</a></li>
+    <li><a href="#coaching">A4 · Industria del coaching</a></li>
+    <li><a href="#referentes">A5 · Qué hacen los referentes</a></li>
+    <li><a href="#estrategia">B1 · Estrategia e IA</a></li>
+    <li><a href="#ventas">B2 · Ventas y marca personal</a></li>
+    <li><a href="#plataformas">B3 · Plataformas</a></li>
+    <li><a href="#chile-negocios">B4 · Economía y pymes Chile</a></li>
+    <li><a href="#fondos">B5 · Fondos concursables</a></li>
+    <li><a href="#eventos">Agenda de eventos</a></li>
+    <li><a href="#fuentes">Fuentes para seguir</a></li>
+    <li><a href="#sistema">Cómo sigue este informe</a></li>
+  </ol>
+</nav>
+
+<main>
+<a class="back" href="../">← Todos los meses</a>
+<header class="cover">
+  <p class="eyebrow">Informe de actualización · N.º 1</p>
+  <h1>Noviembre 2026</h1>
+  <p class="lede">Reenfoque profesional, empleabilidad y coaching. Estrategia, desarrollo de negocio y emprendimiento. Con la agenda de eventos y fondos que viene.</p>
+  <div class="meta">
+    <span>Noticias: agosto a noviembre 2026</span>
+    <span>Agenda: noviembre 2026 a diciembre 2027</span>
+    <span>Corte: 10-11-2026</span>
+  </div>
+</header>
+
+<section id="resumen">
+<h2>Lo clave del mes</h2>
+<ol class="keys">
+  <li><b>El desempleo en Chile llegó a 9,8% (jul-sep 2026)</b>, el más alto desde 2021, con más de un millón de desocupados. En mujeres es 10,5%. <span class="src"><a href="https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/10/29/la-tasa-de-desocupaci%C3%B3n-nacional-fue-9-8-en-el-trimestre-julio-septiembre-de-2026">INE</a></span></li>
+  <li><b>No hay una ola de despidos: hay sequía de contratación.</b> Los despidos por necesidades de la empresa bajan 4,2% en el año, pero los avisos de empleo online caen 12,6% en octubre y cada aviso trae menos vacantes.</li>
+  <li><b>Las búsquedas se alargan.</b> 184 mil personas llevan un año o más buscando trabajo, cerca de 1 de cada 5 desocupados. Los mayores de 50 tardan 10 a 11 meses en recolocarse.</li>
+  <li><b>Desde el 01-10-2026 rige el Subsidio Unificado al Empleo</b>, que prioriza a mujeres de 25 a 54 años y a mayores de 55. Es un argumento concreto para tus clientas cuando negocian con una pyme.</li>
+  <li><b>La IA ya es requisito en el 7,2% de los avisos en Chile</b>, y en el 83% de esos casos es excluyente. Solo 16% de los trabajadores recibió capacitación en IA de su empleador.</li>
+  <li><b>El coaching tiene interés pero convierte poco:</b> 56% de las personas ha pensado contratar uno y solo 17% lo ha hecho (ICF, octubre 2026). Gana quien baja el riesgo percibido con casos, diagnóstico y garantías.</li>
+  <li><b>La IA parte el mercado del coaching en dos.</b> BetterUp cierra su coaching individual y se va a empresas e IA. El coaching humano, presencial e intensivo queda más diferenciado.</li>
+  <li><b>Tony Robbins y Dean Graziosi apuestan por "IA + experiencia de vida = negocio de coaching"</b>: libro el 15-12 y evento online gratis el 12-12-2026. Viene una ola de coaches nuevos de 50 años o más que van a necesitar formación.</li>
+  <li><b>En las empresas, la IA da valor solo cuando se rediseña el trabajo</b> (BCG, McKinsey, Bain, Deloitte). Y casi nadie tiene claro quién decide y quién responde cuando la IA se equivoca. Ese es terreno de consultoría en diseño de negocio.</li>
+  <li><b>Ventana inmediata de fondos:</b> Start-Up Chile BIG13 cierra el 24-11-2026, y Semilla Inicia y Expande de Corfo abrirían cerca del 17-11. El presupuesto 2027 de Economía baja 2,9%, así que en 2027 habrá más competencia por menos cupos.</li>
+</ol>
+</section>
+
+<section id="proximas">
+<h2>Próximas fechas que te conviene tener en el calendario</h2>
+<ul class="next">
+  <li><span class="d">15 y 16 nov</span><span>Daniel Habif, gira "Ascender", en Santiago (Metropolitan) y Concepción. Útil para ver formato de evento masivo en español. <a href="https://www.ticketmaster.cl/event/daniel-habif-gira-ascender-el-paso-final-metropolitan-santiago">Entradas</a></span></li>
+  <li><span class="d">16 al 22 nov</span><span>Chile Tech Week: más de 200 actividades para startups en Santiago y regiones. <span class="chip warn">una sola fuente</span> <a href="https://ecosistemastartup.com/chile-tech-week-200-actividades-para-startups-en-noviembre/">Nota</a></span></li>
+  <li><span class="d">17, 19, 24 nov</span><span>Newfield: sesiones gratuitas por Zoom de sus programas de coaching. <a href="https://newfieldconsulting.com/zoom-cdg-liderazgo-conversacional-para-los-desafios-de-hoy/">Inscripción</a></span></li>
+  <li><span class="d">~17 nov</span><span>Corfo abriría Semilla Inicia (hasta $15 millones) y Semilla Expande (hasta $45 millones), con cierre cerca del 17-12. <span class="chip warn">fecha sin confirmar</span></span></li>
+  <li><span class="d">19 al 21 nov</span><span><b>EtMday 2026</b> (Emprende tu Mente), Parque Bicentenario de Vitacura. España es el país invitado y esperan 60 mil personas. Incluye la premiación de Startup del Año. <a href="https://www.24horas.cl/etmday/inicia-la-cuenta-regresiva-para-el-etmday-2026">Nota</a> · <a href="https://etmday.org">etmday.org</a></span></li>
+  <li><span class="d">20 nov</span><span>Cierre de las Becas Capital Humano de Corfo (200 becas, 15:00).</span></li>
+  <li><span class="d">24 nov</span><span><b>Cierre de Start-Up Chile BIG13</b> (Build, Ignite y Growth), 13:00. De $15 a $75 millones sin ceder participación. Las fundadoras tienen mayor cofinanciamiento. <a href="https://www.corfo.gob.cl/sites/cpp/convocatoria/start-up-chile-ignite-13/">Ficha Corfo</a></span></li>
+  <li><span class="d">4 al 9 dic</span><span>Date With Destiny (Tony Robbins), Palm Beach y virtual, con traducción al español. <a href="https://www.tonyrobbins.com/events/date-with-destiny">Sitio</a></span></li>
+  <li><span class="d">12 dic</span><span><b>AI Advantage LIVE</b>, de Tony Robbins y Dean Graziosi: online, gratis, unas 5 horas. <a href="https://www.einpresswire.com/article/952663803/tony-robbins-and-dean-graziosi-announce-ai-advantage-live-and-open-pre-orders-for-new-book-the-ai-advantage">Anuncio</a></span></li>
+  <li><span class="d">11 al 16 ene</span><span>Congreso Futuro 2027, con cambio de sede (por confirmar). Históricamente gratis. <a href="https://www.radioagricultura.cl/noticias/nacional/congreso-futuro-2027-cambia-de-sede-y-ya-tiene-fecha-conoce-las-novedades-de-su-nueva-edicion_20261103/">Nota</a></span></li>
+  <li><span class="d">13 al 17 ene</span><span>Business Mastery de Tony Robbins, <b>virtual</b>, por postulación. <a href="https://www.tonyrobbins.com/events/business-mastery">Sitio</a></span></li>
+</ul>
+</section>
+
+<span class="part">Parte A · Reenfoque profesional, empleabilidad y coaching</span>
+
+<section id="empleo">
+<h2>A1 · Mercado laboral en Chile</h2>
+<div class="tiles">
+  <div class="tile"><div class="n">9,8%</div><div class="l">Desempleo nacional, jul-sep 2026 (hace un año: 8,5%)</div></div>
+  <div class="tile"><div class="n">10,5%</div><div class="l">Desempleo de mujeres (+1,4 puntos en 12 meses)</div></div>
+  <div class="tile"><div class="n">184 mil</div><div class="l">Personas con 12 meses o más buscando trabajo</div></div>
+  <div class="tile"><div class="n">10,5 meses</div><div class="l">Lo que tarda en recolocarse una persona mayor de 50</div></div>
+  <div class="tile"><div class="n">−12,6%</div><div class="l">Avisos laborales online, octubre 2026 vs. octubre 2025</div></div>
+</div>
+
+<h3>Las cifras</h3>
+<ul>
+  <li><b>Desempleo:</b> 9,8% en jul-sep 2026, publicado el 29-10. Mujeres 10,5%, hombres 9,3%, Región Metropolitana 10,4%. La serie sube sin pausa desde 8,9% en ene-mar 2026 (9,5% en may-jul y 9,6% en jun-ago). <span class="src"><a href="https://www.ine.gob.cl/docs/default-source/ocupacion-y-desocupacion/boletines/2026/nacional/ene-nacional-336.pdf">Boletín INE N.º 336</a> · <a href="https://www.emol.com/noticias/Economia/2026/10/29/1215510/desempleo-en-chile-ine.html">Emol</a></span></li>
+  <li><b>Ocupación:</b> participación 61,6%, ocupación 55,5%. Hay unas 103 mil personas ocupadas menos que hace un año (−1,1%). Quienes buscan trabajo por primera vez suben 31,3%. Informalidad 26,4%.</li>
+  <li><b>Desocupados:</b> más de un millón (un medio da 1.007.976). <span class="chip warn">cifra exacta sin verificar</span> <span class="src"><a href="https://www.t13.cl/noticia/nacional/tasa-desempleo-chile-llega-9-8-trimestre-julio-septiembre-2026-29-10-2026">T13</a></span></li>
+  <li><b>Desempleo de larga duración</b> (medición nueva del INE): 184.033 personas llevan un año o más buscando, cerca del 20% de los desocupados (en 2014 era 10%). La búsqueda dura en promedio 8,1 meses. <span class="src"><a href="https://www.emol.com/noticias/Economia/2026/08/28/1209844/ine-incorpora-nueva-medicion.html">Emol</a></span></li>
+  <li><b>Por edad:</b> según OCEC-UDP, los mayores de 50 tardan 10,5 meses en encontrar trabajo, la búsqueda más larga de todos los grupos, y 1 de cada 4 lleva más de un año. El tramo 35 a 49 es el que tiene más desocupados en número (293.646 en feb-abr 2026). <span class="src"><a href="https://www.theclinic.cl/2026/07/27/estudio-ocec-udp-personas-mayores-de-50-anos-tardan-105-meses-en-encontrar-empleo-el-mayor-tiempo-de-busqueda-entre-la-poblacion-cesante/">The Clinic</a> · <a href="https://ocec.udp.cl/cms/wp-content/uploads/2026/06/Enfoque-Laboral-67-VF-comp.pdf">OCEC-UDP</a></span></li>
+  <li><b>Avisos de empleo (IALI del Banco Central):</b> octubre 2026 en 73,3 puntos, −12,6% anual, con una larga racha de caídas. Desde mayo el índice suma un cuarto portal, así que la comparación con años anteriores no es exacta. Además, cada aviso trae menos cupos: de 4,6 vacantes por aviso en 2019 a 2,7 en 2025. <span class="src"><a href="https://www.theclinic.cl/2026/11/09/banco-central-avisos-laborales-por-internet-caen-126-en-octubre-y-acumulan-doce-meses-a-la-baja">The Clinic</a> · <a href="https://www.t13.cl/noticia/negocios/se-complica-encontrar-trabajo-chile-vacantes-por-aviso-caen-mas-40-15-8-2026">T13</a></span></li>
+  <li><b>Despidos:</b> 39.328 por "necesidades de la empresa" en julio (−11%), 285.151 entre enero y julio (−4,2%). Los expertos advierten que las empresas usan otras causales, y que el problema de fondo es que no se contrata. <span class="src"><a href="https://www.latercera.com/pulso/noticia/despidos-por-necesidad-de-la-empresa-caen-11-en-julio-y-expertos-dicen-que-firmas-estan-ocupando-otras-vias-de-desvinculacion/">La Tercera</a></span></li>
+  <li><b>Seguro de Cesantía:</b> por el alto desempleo se activaron dos giros extra del Fondo Solidario, pagados en septiembre y octubre (hasta $430.288 cada uno). <span class="src"><a href="https://www.spensiones.cl/portal/institucional/594/w3-article-17135.html">Superintendencia de Pensiones</a></span></li>
+  <li><b>Banco Central (IPoM de septiembre):</b> bajó el crecimiento 2026 a 0,25%-0,75% y nombra el deterioro laboral entre las causas. Para 2027 proyecta 2%-3%. No hay alivio claro antes de 2027. <span class="src"><a href="https://www.bcentral.cl/en/content/-/detalle/prensa/nota-de-prensa/bcch-publica-ipom-septiembre-2026">Banco Central</a></span></li>
+  <li><b>Recortes visibles en 2026:</b> Movistar Chile (cerca de 700 personas, tras la compra por Millicom), reestructuración en Enap y cierre de 4 tiendas de Cencosud. <span class="src"><a href="https://www.emol.com/noticias/Economia/2026/02/27/1192874/millicom-despidos-chile.html">Emol</a></span></li>
+</ul>
+
+<h3>Lo que está cambiando</h3>
+<ul>
+  <li><b>Subsidio Unificado al Empleo (Ley 21.808), vigente desde el 01-10-2026:</b> reemplaza al Subsidio al Empleo Joven y al Bono al Trabajo de la Mujer. Lo administra SENCE. Prioriza a jóvenes de 18 a 24, mujeres de 25 a 54, personas mayores y personas con discapacidad. <span class="src"><a href="https://www.bcn.cl/leychile/navegar?idNorma=1222281">BCN</a> · <a href="https://www.meganoticias.cl/dato-util/533440-subsidio-empleo-jovenes-mujeres-mayores-55-requisitos-postular-sue-08-10-2026.html">Meganoticias</a></span></li>
+  <li><b>"Modo Empleo" y Subsidio a la Contratación</b> (desde el 17-07-2026): $50 mil millones, más de 73 mil trabajadores postulados. <span class="src"><a href="https://www.df.cl/economia-y-politica/laboral-personas/mas-de-73-mil-trabajadores-ya-han-postulado-al-subsidio-a-la-contratacion">DF</a></span></li>
+  <li><b>Ley 40 horas:</b> hoy la jornada máxima es de 42 horas. Las 40 horas rigen desde el 26-04-2028.</li>
+  <li><b>Sala Cuna Universal:</b> el Senado la aprobó el 08-09-2026 sin la fórmula de financiamiento. Sigue en la Cámara; el gobierno busca que sea ley a fin de año. <span class="src"><a href="https://www.cnnchile.com/pais/senado-despacha-proyecto-de-sala-cuna-universal-y-pasa-a-revision-de-la-camara/">CNN Chile</a></span></li>
+  <li><b>IA y empleo:</b> 53% de los chilenos cree que la IA reducirá empleos, pero solo 43% teme por su propio puesto. 77% aprendió IA por su cuenta. Según Trabajando.com, el 7,2% de los avisos del primer semestre pide IA, con una renta promedio de $2,12 millones. Los datos a agosto no muestran reemplazo masivo. <span class="src"><a href="https://www.emol.com/noticias/Economia/2026/07/28/1206900/estudio-ia-ofertas-empleo.html">Emol</a></span></li>
+  <li><b>Sueldos:</b> subieron 5,6% en 2026 y se proyecta 4,9% para 2027, pero en cargos altos menos (gerentes 4%, ejecutivos 2%). La Guía Salarial 2027 de Robert Half pone la mediana de un CEO en $17,1 millones. <span class="src"><a href="https://www.cnnchile.com/negocios/salarios-chile-suben-56-2026-empresas-proyectan-alza-49-2027/">CNN Chile (Marsh)</a> · <a href="https://www.emol.com/noticias/Economia/2026/11/03/1215972/salarios-altos-cargos-gerencias-chile.html">Emol (Robert Half)</a></span></li>
+  <li><b>Escasez de talento:</b> según Michael Page (octubre), 68% de las empresas tiene dificultad para encontrar talento calificado. La mitad de los profesionales cree que saber IA justifica un mejor sueldo, pero solo 20% de las empresas lo considera. <span class="src"><a href="https://www.theclinic.cl/2026/10/30/michael-page-68-de-las-empresas-en-chile-tienen-dificultades-para-encontrar-talento-calificado/">The Clinic</a></span></li>
+  <li><b>La gente se queda por miedo:</b> la intención de cambiar de trabajo bajó a cerca de 10% (Randstad 2026). Pesan el sueldo y la seguridad laboral. <span class="src"><a href="https://randstad.cl/s3fs-media/cl/public/2026-05/REBR%202026_%20Country%20Report%20Chile_0.pdf">Randstad</a></span></li>
+  <li><b>Edadismo:</b> 62% de las personas de 50 a 65 dice haber sufrido discriminación laboral y 89% percibe que se aceptan sueldos más bajos para no quedar sin trabajo (Cadem, julio). Solo 4% de las empresas tiene políticas para contratar o retener a personas de 50 o más. <span class="src"><a href="https://cadem.cl/wp-content/uploads/2026/07/Resumen_ejecutivo_Cincuentimeter.pdf">Cadem</a></span></li>
+  <li><b>Mujeres:</b> la participación laboral femenina ronda 52%-53% (OCDE: cerca de 62%). 35% de las mujeres fuera de la fuerza laboral lo está por labores de cuidado. <span class="src"><a href="https://ocec.udp.cl/cms/wp-content/uploads/2026/07/Zoom-de-Genero-Especial-2026-Cuidadores-.pdf">OCEC-UDP</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para Reenfoque</b>Tu público, mujeres de 35 a 55 con trayectoria, está donde el mercado más duele. Eso hace más urgente el programa y también obliga a cuidar la promesa: con búsquedas que promedian casi un año, lo honesto es "acortar la búsqueda y hacerla con método", nunca "trabajo en 3 meses". Con menos avisos y menos cupos por aviso, postular a todo rinde cada vez menos, y eso respalda tu trabajo de dirección, red y logros. Dos ideas concretas: incluir "IA aplicada a mi rol" en el CV y LinkedIn de cada clienta, y enseñarle a usar el subsidio como argumento cuando negocia con una pyme.</div>
+</section>
+
+<section id="headhunting">
+<h2>A2 · Headhunting y outplacement</h2>
+<ul>
+  <li><b>En cargos senior la puerta es la red y el headhunter, no el aviso.</b> Lo dicen columnas del rubro de 2026, aunque no hay un informe independiente con datos duros sobre la demanda de búsqueda ejecutiva en Chile. Las consultoras hablan de escasez ejecutiva en minería, salud, tecnología y banca, de buscar chilenos que trabajan fuera y de shortlists con cuota de mujeres. <span class="chip warn">sin datos duros</span> <span class="src"><a href="https://g5noticias.cl/2026/04/08/donde-estan-realmente-los-cargos-ejecutivos-por-vanessa-orellana-co-fundadora-executive-outplacement/">G5noticias</a></span></li>
+  <li><b>Outplacement:</b> la única cifra de mercado es antigua (unos US$10 millones al año en Chile, dato de 2018). Afuera se está volviendo digital y barato (INTOO, RiseSmart, Careerminds), con IA y coaching ilimitado. <span class="src"><a href="https://careerminds.com/blog/ai-really-behind-the-layoffs">Careerminds</a></span></li>
+  <li><b>Portales:</b> Expo Laborum Online tuvo ediciones en mayo (más de 14 mil vacantes) y octubre de 2026 (más de 4 mil). Laborum publica un índice mensual. <span class="src"><a href="https://www.meganoticias.cl/dato-util/533369-feria-laboral-4000-empleos-laborum-ofertas-trabajo-postular-octubre-07-10-2026.html">Meganoticias</a></span></li>
+  <li><b>Firmas de referencia a seguir:</b> Korn Ferry, Egon Zehnder, Spencer Stuart, Heidrick &amp; Struggles, Amrop, Michael Page, Hays, Robert Half, Adecco, Randstad, LHH y Right Management. Este mes no se pudo revisar qué publicaron; queda para el próximo informe.</li>
+</ul>
+<div class="so"><b>Qué significa para Reenfoque</b>Hay espacio para un "mapa de headhunters por industria" dentro del programa: quiénes son, cómo hacerse visible para ellos y qué esperan ver en LinkedIn. Y a mediano plazo, una línea B2B: outplacement humano y premium para empresas chilenas que desvinculan, centrado en dirección e identidad, que es lo que el outplacement digital no hace.</div>
+</section>
+
+<section id="empleo-mundo">
+<h2>A3 · Empleo en el mundo</h2>
+<ul>
+  <li><b>EE.UU., octubre:</b> +165 mil empleos (se esperaban 65 mil) y desempleo de 4,1%. Pero el subempleo sube a 7,9%, señal de más trabajo part-time sin quererlo. <span class="src"><a href="https://www.bls.gov/news.release/archives/empsit_11062026.htm">BLS</a></span></li>
+  <li><b>Despidos atribuidos a la IA en EE.UU.:</b> unos 121 mil en 2026, cerca del 20% del total y más del doble que en todo 2025. En octubre bajaron mucho y las "condiciones de mercado" volvieron a ser la primera causa. Challenger advierte que citar la IA no prueba que haya reemplazado a esas personas. <span class="src"><a href="https://www.challengergray.com/blog/challenger-report-layoffs-fall-hiring-picks-up-ai-leads-for-fifth-straight-month/">Challenger</a></span></li>
+  <li><b>Compromiso laboral (Gallup 2026):</b> el compromiso global cayó a 20%, y el de los jefes bajó de 31% (2022) a 22%. Los mandos medios están desgastados. <span class="src"><a href="https://www.gallup.com/workplace/349484/state-workplace.aspx">Gallup</a></span></li>
+  <li><b>España (EPA, tercer trimestre):</b> el empleo llega a un máximo de 22,85 millones, pero el paro vuelve a superar el 10%. <span class="src"><a href="https://www.ine.es/dyngs/Prensa/EPA3T26.htm">INE España</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para Reenfoque</b>Además de quien busca trabajo, hay un segmento grande que tiene trabajo y está agotado: la mando media que se pregunta "¿sigo o me reenfoco?" y no se mueve por miedo. Ese segmento calza con la parte de dirección del programa y puede ser un ángulo de contenido para las semanas que vienen.</div>
+</section>
+
+<section id="coaching">
+<h2>A4 · Industria del coaching</h2>
+<div class="tiles">
+  <div class="tile"><div class="n">US$5.340 M</div><div class="l">Ingresos globales del coaching (ICF/PwC 2025)</div></div>
+  <div class="tile"><div class="n">122.974</div><div class="l">Coaches en el mundo</div></div>
+  <div class="tile"><div class="n">56% → 17%</div><div class="l">Personas que han pensado contratar coaching vs. las que lo han hecho</div></div>
+  <div class="tile"><div class="n">~US$114/h</div><div class="l">Tarifa promedio en Latinoamérica (dato 2023)</div></div>
+</div>
+<ul>
+  <li><b>ICF Global Coaching Study 2025</b> (PwC, unas 10 mil respuestas): US$5.340 millones de ingresos y unos 123 mil coaches, 90% con clientes activos. El ingreso promedio global ronda US$49 mil al año. En Latinoamérica, el último dato es de 2023: unos US$114 por hora y US$22.900 al año. <span class="chip warn">promedios citados por terceros</span> <span class="src"><a href="https://coachingfederation.org/blog/global-coaching-industry-surpasses-5-34-billion-as-emerging-markets-drive-growth/">ICF</a></span></li>
+  <li><b>ICF Consumer Awareness Study 2026</b> (23-10-2026, 26 países): 74% conoce el coaching, 67% tiene buena impresión, 56% ha pensado contratarlo, solo 17% lo ha usado y 84% de quienes lo usaron quedó satisfecho. Vienen informes por país. <span class="src"><a href="https://coachingfederation.org/resource/2026-icf-global-coaching-study-executive-summary/">ICF</a></span></li>
+  <li><b>IA y ética:</b> el Código de Ética ICF 2025 obliga a avisar al cliente cuando se usa IA. En julio de 2026 la ICF formó un grupo de trabajo sobre estándares éticos de IA. <span class="src"><a href="https://coachingfederation.org/wp-content/uploads/2026/10/icf-ai-coaching-ai-partnership-unleash-potential.pdf">ICF (oct-2026)</a></span></li>
+  <li><b>Credenciales ICF:</b> desde el 01-01-2026 las evaluaciones ACC y MCC usan nuevos requisitos mínimos de habilidades. <span class="src"><a href="https://coachingfederation.org/blog/supporting-coaches-with-greater-clarity-new-minimum-skills-requirements/">ICF</a></span></li>
+  <li><b>IAC:</b> sin cambios anunciados en 2026 a la certificación (IAC Certified Coach y Master Coach, sobre las 9 Masteries). Tiene menos presencia de marca en Latinoamérica que la ICF. <span class="src"><a href="https://certifiedcoach.org/">certifiedcoach.org</a></span></li>
+  <li><b>ICF Chile:</b> el Congreso Latinoamericano de Coaching 2026 fue el 31-07 y 01-08 en la UTFSM, con más de 300 personas. Los temas: IA, complejidad organizacional y bienestar de equipos. El V Congreso ACCOP (coaching ontológico) fue el 02-10. <span class="src"><a href="https://www.icfchile.cl/inicio-1">ICF Chile</a> · <a href="https://congresoaccop.cl/">ACCOP</a></span></li>
+  <li><b>Coaching con IA:</b> BetterUp dejó de vender coaching individual (cierra el 31-01-2027) para enfocarse en empresas y coaching con IA. El modelo que se impone es híbrido: la IA cubre el volumen y el coach humano el trabajo profundo. <span class="src"><a href="https://www.coachtrainingedu.com/blog/betterup-individual-coaching-ending/">CTEdu</a></span></li>
+  <li><b>Saturación:</b> está en el tramo bajo (coaching por hora, genérico, sin resultado definido). En Skool, 73% de las comunidades en tendencia tiene menos de 500 miembros y cobra una mediana de US$39 al mes. <span class="src"><a href="https://revenuegeeks.com/software/skool/statistics">RevenueGeeks</a></span></li>
+  <li><b>Cómo se vende hoy</b> (datos de proveedores, sin verificar):
+    <ul>
+      <li>La asistencia a webinars en vivo bajó a 18%-25% de los inscritos (en 2021 era 40%-55%).</li>
+      <li>Ganan el video de venta grabado, los challenges gratis de 1 a 5 días y los mensajes directos con setters, cada vez más con IA.</li>
+      <li>Para ofertas sobre US$10 mil, cerrar en una llamada con una persona sigue siendo el estándar.</li>
+    </ul>
+  </li>
+  <li><b>EMCC:</b> su conferencia global 2027 será en Corea del Sur en mayo. <span class="src"><a href="https://emccglobal.org/news/emcc-global-conference-is-heading-to-south-korea-may-2027/">EMCC</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para ti</b>El cuello de botella del coaching no es la demanda, es la confianza para comprar. Eso confirma tu foco en casos, conversación de diagnóstico y precio íntegro sin descuento. Si cobras con programas de resultado, quedas muy arriba del promedio latinoamericano, y ese dato sirve para anclar el precio. La IA se queda con el coaching barato. El tuyo, humano, intensivo y con la escuela Robbins detrás, queda más diferenciado.</div>
+</section>
+
+<section id="referentes">
+<h2>A5 · Qué están haciendo los referentes</h2>
+<div class="cols">
+  <div class="box">
+    <h4>Tony Robbins</h4>
+    <ul>
+      <li>UPW Miami (5 al 8-11-2026), presencial y virtual, con opción en español por traducción.</li>
+      <li>Con Dean Graziosi: libro <i>The AI Advantage</i> (15-12-2026) y AI Advantage LIVE, online y gratis (12-12-2026).</li>
+      <li>En mayo lanzó con Graziosi un bootcamp para convertir la experiencia de vida en un negocio de coaching.</li>
+      <li>2027: Business Mastery virtual (13 al 17-01), UPW virtual (18 al 21-03), UPW Colonia (25 al 28-06), UPW Miami (4 al 7-11).</li>
+      <li>No hay eventos propios en Latinoamérica; el español llega por traducción (<a href="https://www.tonyrobbinsspain.com/upw-virtual-noviembre-2026/">Tony Robbins Spain</a>).</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Russell Brunson · ClickFunnels</h4>
+    <ul>
+      <li>Funnel Hacking Live AI (21 al 23-09-2026, Las Vegas), presentado como edición única y centrado en embudos con IA.</li>
+      <li>No hay Funnel Hacking Live 2027 anunciado.</li>
+      <li>Side Hustle Summit virtual y gratis (septiembre) y AI Secrets Challenge (abril).</li>
+      <li>Se espera su libro <i>Offer Secrets</i> en 2027 <span class="chip warn">una sola fuente</span>.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Alex Hormozi · Acquisition.com</h4>
+    <ul>
+      <li>Sin libro nuevo en el período; <i>$100M Money Models</i> (2025) sigue siendo su lanzamiento récord.</li>
+      <li>Firmó con la agencia CAA (mayo 2026) y lanzó el programa "Scale or Fail".</li>
+      <li>Scaling Workshops presenciales en Las Vegas (9-10 nov y 9-10 dic 2026), unos US$5 mil por asiento.</li>
+      <li>No tiene eventos virtuales gratis en 2026. Su podcast <i>The Game</i> es casi diario.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Joe Dispenza</h4>
+    <ul>
+      <li>Sin libro nuevo en inglés; en 2026 salieron reediciones en español.</li>
+      <li>Retiros de una semana en 2027: Aurora, Denver (12 al 18-04, US$2.499) y Riviera Maya (marzo a junio, fechas por confirmar).</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Donald Miller · StoryBrand</h4>
+    <ul>
+      <li>Asumí que "David Miller" es Donald Miller, el de StoryBrand. Si era otra persona, la alternativa más probable es David Meltzer.</li>
+      <li>Workshop presencial en Nashville en diciembre (1-2 o 10-11, la página tiene las dos fechas).</li>
+      <li>Libro <i>StoryBrand Your Business Field Guide</i> el 12-01-2027.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Otros con novedades</h4>
+    <ul>
+      <li><b>Dean Graziosi:</b> cumbres virtuales gratis en abril y junio, y el evento del 12-12 con Robbins.</li>
+      <li><b>Dan Martell:</b> <i>Let Go to Grow</i>, secuela de <i>Buy Back Your Time</i>, el 19-01-2027.</li>
+      <li><b>Grant Cardone:</b> 10X Business Summit en Miami, 23 al 25-07-2027. 10X Growth Con 2027 no está confirmado.</li>
+      <li><b>Mel Robbins:</b> <i>The Let Them Theory</i> superó 7 millones de ejemplares.</li>
+      <li><b>Jay Shetty:</b> su escuela de certificación sigue abriendo cohortes.</li>
+      <li><b>Daniel Habif:</b> Santiago el 15-11 y Concepción el 16-11.</li>
+      <li><b>Marian Rojas Estapé:</b> estuvo en Chile en enero de 2026.</li>
+    </ul>
+  </div>
+</div>
+<div class="so"><b>Qué significa para ti</b>Los grandes del marketing de coaching se están moviendo a la IA y a formatos más chicos. El motor de venta que se repite es el evento online gratis de 1 a 5 días con una oferta al final. Y la apuesta de Robbins y Graziosi va a traer muchos coaches nuevos de 50 años o más buscando formación seria: ahí encaja tu rol de trainer de coaches y mentor.</div>
+</section>
+
+<span class="part">Parte B · Estrategia, desarrollo de negocio y emprendimiento</span>
+
+<section id="estrategia">
+<h2>B1 · Estrategia e IA en las empresas</h2>
+<ul>
+  <li><b>BCG, Applied AI Index 2026 (30-09):</b> casi 50% de las empresas ya genera valor con IA (en 2025 era 5%). El gasto en IA llega a 3,3% de los ingresos y más del 80% está fuera de TI. Solo 5% tiene los controles necesarios para agentes autónomos. <span class="src"><a href="https://www.bcg.com/press/30september2026-ai-starting-to-pay-off-companies-generate-value">BCG</a></span></li>
+  <li><b>McKinsey, The State of AI 2026 (agosto):</b> casi tres cuartos de las empresas de alto desempeño rediseñaron sus flujos de trabajo por la IA. En octubre agregó que equipos de 8 a 10 personas pasan a ser de 4 a 6 personas con agentes de IA. <span class="src"><a href="https://www.mckinsey.com/capabilities/people-and-organization/our-insights/ai-is-changing-work-now-it-has-to-change-the-organization">McKinsey</a></span></li>
+  <li><b>McKinsey, State of Organizations 2026:</b> 88% de las organizaciones experimenta con IA, pero 81% no ve un impacto relevante en resultados. <span class="src"><a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/people%20and%20organizational%20performance/our%20insights/the%20state%20of%20organizations/2026/the-state-of-organizations-2026.pdf">PDF</a></span></li>
+  <li><b>Bain, Technology Report 2026 (29-09):</b> quienes tratan la IA como una transformación completa logran crecimiento de EBITDA de 10% a 25%. <span class="src"><a href="https://www.bain.com/insights/the-ai-native-enterprise-absorption-is-the-new-advantage-technology-report-2026/">Bain</a></span></li>
+  <li><b>Deloitte (fines de octubre, 3.500 líderes):</b> 40% ya deja que la IA ejecute decisiones sin aprobación humana, al menos en parte, y 23% no sabe quién responde cuando la IA se equivoca. Solo 28% ve más ingresos gracias a la IA. <span class="src"><a href="https://www.deloitte.com/us/en/about/press-room/enterprise-ai-enters-an-roi-reckoning.html">Deloitte</a></span></li>
+  <li><b>Gartner:</b> predicciones 2027 (15-09) y tendencias tecnológicas 2027 (20-10). Prevé que al 2028, 25% de las brechas de seguridad venga del mal uso de agentes de IA. <span class="src"><a href="https://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-identifies-the-top-strategic-technology-trends-for-2027">Gartner</a></span></li>
+  <li><b>HBR, noviembre-diciembre:</b> rediseñar procesos de punta a punta. La gente rechaza la IA cuando mantiene la responsabilidad pero pierde la autoridad de decidir. Una IA diseñada para exigir produjo 3,5 veces más metas excelentes que una complaciente (prueba de BT con 2.400 personas). <span class="src"><a href="https://hbr.org/2026/11/what-sycophantic-ai-can-cost-your-organization">HBR</a></span></li>
+  <li><b>Thinkers50:</b> la gala 2026 fue el 2 de noviembre en Londres. <span class="src"><a href="https://thinkers50.com/">thinkers50.com</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para ti</b>Todas las consultoras grandes dicen lo mismo: probar herramientas no da resultados; lo que da resultados es rediseñar el trabajo y definir quién decide y quién responde. Eso es diseño de negocio y liderazgo, tu terreno. Una oferta posible para gerentes de pymes y medianas: un diagnóstico de rediseño de un proceso con IA, citando estos estudios, que ya instalaron la urgencia.</div>
+</section>
+
+<section id="ventas">
+<h2>B2 · Ventas y negocios de marca personal</h2>
+<ul>
+  <li><b>El comprador decide antes de la llamada:</b> en 82% de los casos ya tiene favorito antes del primer contacto, y quien no está en su lista corta tiene menos de 10% de probabilidad de ganar (6sense, 02-11-2026, 4.611 compradores). <span class="src"><a href="https://6sense.com/news/6sense-research-finds-that-vendors-need-to-be-known-and-preferred-before-the-buying-journey-begins">6sense</a></span></li>
+  <li><b>Modelo de negocio de los creadores</b> (Kit, 550 creadores): coaching y consultoría 31,6%, cursos 23,1%, newsletter 16,4%, comunidades solo 5,1%. 57% usa IA a diario. <span class="src"><a href="https://kit.com/resources/blog/ai-creator-economy-report">Kit</a></span></li>
+  <li><b>Comunidades:</b> solo 12% de quienes tienen una comunidad vive de ella. El boca a boca y el email son el canal principal para 43%. <span class="src"><a href="https://www.heartbeat.chat/reports/creator-economy-statistics">Heartbeat</a></span></li>
+  <li><b>Kajabi</b> (último dato duro, 2025): el creador típico que factura seis cifras tiene entre mil y 10 mil seguidores, unos 4 mil correos en su lista y solo 309 clientes. <span class="src"><a href="https://www.businesswire.com/news/home/20250806424975/en/$10B-in-Creator-Revenue-and-Climbing-Kajabi-Creators-Are-Achieving-Long-Term-Financial-Success">Business Wire</a></span></li>
+  <li><b>Setters con IA:</b> en 2026 ya son una categoría establecida: ManyChat como entrada, unos días de seguimiento y un setter de IA que agenda. Cuestan de US$50 a 150 al mes. <span class="src"><a href="https://www.setterflo.io/best-ai-appointment-setters">Comparativa</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para ti</b>Tu modelo (contenido, mensaje, llamada, programa de alto valor) es el más común entre los creadores que facturan. Lo que cambia: el contenido hace la prospección y la llamada confirma una preferencia que ya existe. La IA abarata el agendamiento, así que lo que te diferencia es la calidad de la conversación de diagnóstico y tener una lista propia de correo o WhatsApp. Si usas IA para agendar, que sea para el primer filtro, nunca para cerrar.</div>
+</section>
+
+<section id="plataformas">
+<h2>B3 · Cambios en las plataformas</h2>
+<ul>
+  <li><b>Instagram:</b>
+    <ul>
+      <li>Prueba video horizontal de hasta 90 minutos: primero en Brasil y en EE.UU. desde el 26-10. Se pueden enlazar hasta 8 Reels a un video largo. <span class="src"><a href="https://techcrunch.com/2026/10/26/watch-out-youtube-instagram-goes-from-short-form-to-90-minute-videos/">TechCrunch</a></span></li>
+      <li>Lanzó un asistente de video con IA para creadores (30-09).</li>
+      <li>Los Reels de hasta 3 minutos pueden recomendarse a quienes no te siguen; los más largos no.</li>
+      <li>Mosseri insiste en que los envíos por mensaje pesan más que los comentarios.</li>
+    </ul>
+  </li>
+  <li><b>LinkedIn:</b>
+    <ul>
+      <li>El 09-11 explicó su nuevo sistema de recomendación: usa resúmenes de tu perfil y de lo que publicas, hechos con IA, para mostrarte a quienes no son tus contactos. <span class="src"><a href="https://www.socialmediatoday.com/news/linkedin-explains-its-improved-content-recommendation-system/874206/">Social Media Today</a></span></li>
+      <li>Desde marzo castiga los posts que piden interacción a la fuerza y el contenido reciclado.</li>
+      <li>Prueba anuncios antes de los videos de creadores, con reparto de ingresos.</li>
+      <li>Los Thought Leader Ads (pagar para amplificar el post de una persona) dan +252% de clics según LinkedIn.</li>
+    </ul>
+  </li>
+  <li><b>YouTube</b> (23-09): edición conversacional con Gemini y doblaje automático de transmisiones en vivo en inglés y español, ambos a comienzos de 2027. <span class="src"><a href="https://techcrunch.com/2026/09/23/youtube-adds-new-creator-tools-like-video-a-b-testing-dynamic-thumbnails-and-live-dubbing/">TechCrunch</a></span></li>
+  <li><b>WhatsApp Business:</b> ya se puede reservar un nombre de usuario, y las empresas pueden reclamar el mismo de Instagram. <span class="src"><a href="https://about.fb.com/news/2026/06/its-time-to-reserve-your-whatsapp-username/">Meta</a></span></li>
+  <li><b>Búsqueda con IA:</b> las respuestas con IA de Google reducen entre 19% y 58% los clics hacia otros sitios, según el estudio. ChatGPT ya vende publicidad en 89 países (no se verificó si Chile está incluido). <span class="src"><a href="https://searchengineland.com/google-ai-mode-cuts-clicks-satisfaction-study-490494">Search Engine Land</a> · <a href="https://www.cnbc.com/2026/10/21/openai-chatgpt-ads-26-countries.html">CNBC</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para ti</b>
+<ul>
+  <li><b>LinkedIn:</b> el alcance depende cada vez más de que tu perfil y tus posts cuenten la misma historia. Un nicho claro le gana a la viralidad.</li>
+  <li><b>Instagram:</b> conviene seguir con Reels de menos de 3 minutos pensados para que se compartan por mensaje, y tener lista una clase larga para cuando el video largo llegue a Chile.</li>
+  <li><b>WhatsApp:</b> reserva tu nombre de usuario igual al de tu marca.</li>
+  <li><b>Búsqueda:</b> pesa más que te mencionen por tu nombre (podcasts, entrevistas, tu propio método con nombre) que el tráfico a un blog.</li>
+</ul>
+</div>
+</section>
+
+<section id="chile-negocios">
+<h2>B4 · Economía, pymes y ecosistema en Chile</h2>
+<ul>
+  <li><b>Actividad:</b> el Imacec de septiembre creció 0,2% (sin minería, 2,0%; la minería cayó 12,1%). El PIB del tercer trimestre se publica el 18-11. <span class="src"><a href="https://www.bcentral.cl/contenido/-/detalle/prensa/nota-de-prensa/imacec-septiembre-2026">Banco Central</a></span></li>
+  <li><b>Insolvencias (primer semestre 2026):</b> 8.047 procedimientos, con las renegociaciones de personas subiendo 131%. Las liquidaciones se concentran en comercio (31%), manufactura (22%) y construcción (13%). <span class="src"><a href="https://g5noticias.cl/2026/07/31/superir-presento-reporte-estadistico-semestral-a-junio-mas-de-8-mil-personas-y-empresas-iniciaron-procedimientos-concursales-en-primer-semestre-2026/">G5noticias</a></span></li>
+  <li><b>Microemprendimiento (INE):</b> casi 2 millones de microemprendedores, con una ganancia promedio de $828.612 al mes. Más de la mitad es informal y solo 29,3% tiene capacitación formal. <span class="src"><a href="https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2025/12/10/en-chile-hay-cerca-de-2-millones-de-personas-microemprendedoras">INE</a></span></li>
+  <li><b>IA en pymes:</b> 70% de las pymes ya usa IA (más de 80% en la Región Metropolitana). Los frenos son el talento y no saber cómo implementarla. <span class="src"><a href="https://ecosistemastartup.com/?p=103359">Entel Digital y CENIA</a></span></li>
+  <li><b>Agenda ProPyme</b> (Semana de la Pyme, 13 al 16-10): dos proyectos de ley que mantienen la tasa de impuesto de 12,5% para pymes con transición al 23%, el pago oportuno de facturas y patentes más simples. Debían ingresar al Congreso en noviembre. <span class="src"><a href="https://www.gob.cl/noticias/semana-de-la-pyme-2026-gobierno-anuncia-dos-proyectos-de-ley-pro/">Gob.cl</a></span></li>
+  <li><b>Fondo de Fondos:</b> el proyecto de ley ingresó el 29-10-2026 con suma urgencia. Corfo pondría US$25 millones el primer año como ancla para fondos privados. Chile cayó a 5,8% de la inversión de capital de riesgo de la región. <span class="src"><a href="https://portalinnova.cl/ministerio-de-economia-y-corfo-presentan-proyecto-de-fondo-de-fondos/">Portal Innova</a></span></li>
+  <li><b>Presupuesto 2027:</b> Economía baja 2,9% y Ciencia 6,4%. En DIPRES, la línea "Semilla Flexible" aparece con −84%. <span class="chip warn">verificar en el documento</span> <span class="src"><a href="https://www.pauta.cl/actualidad/2026/10/07/vicepresidente-de-corfo-por-presupuesto-2027-el-impacto-que-podemos-tener-puede-ser-tanto-o-mas-que-el-de-2026.html">Pauta</a> · <a href="https://www.dipres.gob.cl/597/articles-430841_doc_pdf.pdf">DIPRES</a></span></li>
+  <li><b>Start-Up Chile:</b> la generación BIG12 (unas 60 startups, 60% con IA, elegidas entre 1.296 postulaciones) partió en septiembre en NIDO Lucía. <span class="src"><a href="https://www.t13.cl/noticia/emprendedores/nueva-generacion-start-up-chile-comienza-proceso-aceleracion-nido-lucia-22-9-2026">T13</a></span></li>
+  <li><b>Premios:</b>
+    <ul>
+      <li>Avonni cumplió 20 años (ceremonia el 03-11, 1.042 postulaciones) y se expande a Latinoamérica con CAF.</li>
+      <li>El Desafío Emprendedor del Banco de Chile sumó una categoría para startups y un premio para mayores de 50.</li>
+    </ul>
+    <span class="src"><a href="https://g5noticias.cl/2026/11/04/avonni-cumple-20-anos-y-se-expande-a-america-latina-y-el-caribe-junto-a-caf/">G5noticias</a></span>
+  </li>
+  <li><b>Capital de riesgo:</b>
+    <ul>
+      <li>Platanus hizo el primer cierre de un fondo nuevo (meta US$15 millones).</li>
+      <li>Kayyak Ventures formaliza Taram II (US$45 millones, con apoyo Corfo).</li>
+      <li>En Latinoamérica, el tercer trimestre sumó unos US$1.900 millones, con el número de rondas en mínimos.</li>
+    </ul>
+    <span class="src"><a href="https://acafi.cl/wp-content/uploads/2026/09/Radiografia-fondos-de-inversioin-VC-2026.pdf">ACAFI</a></span>
+  </li>
+  <li><b>Ley Fintec:</b> el Sistema de Finanzas Abiertas se postergó a julio de 2027. <span class="src"><a href="https://www.df.cl/mercados/banca-fintech/fintech-pierden-la-pulseada-cmf-aplaza-hasta-2027-la-entrada-en-vigencia">DF</a></span></li>
+</ul>
+<div class="so"><b>Qué significa para ti como mentor y consultor</b>
+<ul>
+  <li><b>Fondos:</b> en 2027 habrá menos fondos públicos de semilla y más competencia. Conviene que tus emprendedores combinen fondos públicos con premios y capital privado, y que preparen las postulaciones con tiempo.</li>
+  <li><b>Pymes en riesgo:</b> en comercio, la conversación urgente es caja, renegociación y diversificación.</li>
+  <li><b>IA en pymes:</b> casi todas la usan, pero sin estrategia. Ahí cabe tu consultoría.</li>
+</ul>
+</div>
+</section>
+
+<section id="fondos">
+<h2>B5 · Fondos concursables y convocatorias</h2>
+<p class="note">Las fechas de 2027 son estimaciones basadas en cuándo abrieron en 2026. Confírmalas en el sitio oficial antes de comprometerte con un emprendedor.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Fondo</th><th>Institución</th><th>Para quién</th><th>Monto aprox.</th><th>Próxima apertura o cierre</th><th>Estado</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://www.corfo.gob.cl/sites/cpp/convocatoria/start-up-chile-ignite-13/">BIG13 (Build, Ignite, Growth)</a></td><td>Start-Up Chile · Corfo</td><td>Startups tecnológicas de Chile y el extranjero</td><td>$15 a $75 millones</td><td class="date">Cierra 24-11-2026, 13:00</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr><td><a href="https://www.elboyaldia.cl/noticia/economia/becas-corfo-2026-las-carreras-que-pueden-postular-cuanto-cuesta-y-hasta-cuando-hay-">Becas Capital Humano</a></td><td>Corfo</td><td>Profesionales y técnicos</td><td>Beca</td><td class="date">Cierra 20-11-2026, 15:00</td><td><span class="chip ok">prensa</span></td></tr>
+    <tr><td><a href="https://www.elmorrocotudo.cl/noticia/sociedad/tienes-un-emprendimiento-corfo-prepara-fondos-de-hasta-45-millones-revisa-las-fecha">Semilla Inicia</a></td><td>Corfo</td><td>Emprendimientos sin ventas</td><td>Hasta $15 millones</td><td class="date">~17-11 al 17-12-2026</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr><td><a href="https://www.corfo.gob.cl/sites/cpp/convocatoria/semilla-expande-2026/">Semilla Expande</a></td><td>Corfo</td><td>Emprendimientos con ventas</td><td>Hasta $45 millones</td><td class="date">~17-11 al 17-12-2026</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr><td><a href="https://coloroemprendedor.substack.com/p/crea-y-valida-220-millones-el-fondo">Crea y Valida</a></td><td>Corfo</td><td>Empresas con proyectos de innovación</td><td>Hasta $220 millones</td><td class="date">~10-11-2026 al 28-01-2027</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr><td><a href="https://coloroemprendedor.substack.com/p/fondos-corfo-y-startup-chile-lo-que">Consolida y Expande</a></td><td>Corfo</td><td>Empresas en crecimiento</td><td>Hasta $150 millones</td><td class="date">Oct-nov 2026</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr><td><a href="https://startupchile.org">BIG14</a></td><td>Start-Up Chile</td><td>Startups tecnológicas</td><td>$15 a $75 millones</td><td class="date">~mayo 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.sercotec.cl">Capital Semilla Emprende</a></td><td>Sercotec</td><td>Emprendimientos nuevos</td><td>~$3,5 millones</td><td class="date">~mar-may 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.sercotec.cl/sercotec-abre-nueva-convocatoria-de-capital-abeja-para-impulsar-la-autonomia-economica-de-las-mujeres/">Capital Abeja Emprende</a></td><td>Sercotec</td><td>Mujeres emprendedoras</td><td>$3,5 millones</td><td class="date">~mayo 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.sercotec.cl/programas/crece/">Crece</a></td><td>Sercotec</td><td>Micro y pequeñas empresas (200 a 25.000 UF de ventas)</td><td>Variable</td><td class="date">~2.º trimestre 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://contable.app/fondos-concursables/ruta-digital-kit-digital">Kit Digital</a></td><td>Sercotec</td><td>Mypes que pasaron por Ruta Digital</td><td>$1,2 millones</td><td class="date">~junio 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.chileatiende.gob.cl/fichas/9343-programa-emprendamos">Emprendamos / Emprendamos Semilla</a></td><td>FOSIS</td><td>Personas en situación vulnerable</td><td>~$800 mil</td><td class="date">~mar-abr 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.df.cl/df-lab/innovacion-y-startups/startup-ciencia-otorgo-11-398-millones-el-monto-mas-alto-desde-su">Startup Ciencia</a></td><td>ANID</td><td>Empresas de base científica</td><td>~$134 millones</td><td class="date">~jul-sep 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.diarioestrategia.cl/texto-diario/mostrar/5975230/prochile-invita-empresas-gremios-region-metropolitana-participar-concursos-2027-busca-fomentar-exportaciones">Concursos ProChile</a></td><td>ProChile</td><td>Pymes exportadoras y gremios</td><td>~$2.000 millones en total</td><td class="date">~jul-ago 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://sitiospublicos.bancochile.cl/nuestro-banco/es/prensa/noticias/detalle/concurso-nacional-desafio-emprendedor-abre-su-11a-convocatoria-con-nueva-categoria-para-startups-y-un-premio-especial-para-emprendedores-mayores-de-50-anos">Desafío Emprendedor (final)</a></td><td>Banco de Chile</td><td>Pymes y startups, premio 50+</td><td>Más de $200 millones en premios</td><td class="date">Final ~feb 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://www.tvu.cl/prensa/2026/04/08/foroinnovacion-lanzo-oficialmente-postulaciones-para-el-premio-nacional-de-innovacion-avonni-2026.html?amp=1">Premio Avonni 2027</a></td><td>ForoInnovación</td><td>Innovadores</td><td>Premio y visibilidad</td><td class="date">~abril 2027</td><td><span class="chip warn">estimado</span></td></tr>
+    <tr><td><a href="https://g5noticias.cl/2026/07/23/karina-gomez-galvez-sera-la-nueva-gerente-general-de-fondo-esperanza/">Bancos comunales</a></td><td>Fondo Esperanza</td><td>Emprendedoras en situación vulnerable</td><td>Microcrédito</td><td class="date">Postulación continua</td><td><span class="chip ok">abierto</span></td></tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<section id="eventos">
+<h2>Agenda de eventos · noviembre 2026 a diciembre 2027</h2>
+<p class="note">Filtra por tipo. Las fechas marcadas "sin confirmar" vienen del patrón de años anteriores o de una sola fuente. "ES" indica que tiene versión o traducción al español. Lo online se puede ver desde Chile.</p>
+<div class="filters" role="group" aria-label="Filtrar eventos">
+  <button type="button" data-f="all" aria-pressed="true">Todos</button>
+  <button type="button" data-f="chile" aria-pressed="false">Chile</button>
+  <button type="button" data-f="online" aria-pressed="false">Online</button>
+  <button type="button" data-f="coaching" aria-pressed="false">Coaching y desarrollo personal</button>
+  <button type="button" data-f="empleo" aria-pressed="false">Empleabilidad</button>
+  <button type="button" data-f="negocio" aria-pressed="false">Negocio y marketing</button>
+</div>
+<div class="tablewrap">
+<table id="ev">
+  <thead><tr><th>Fecha</th><th>Evento</th><th>Dónde y formato</th><th>Precio</th><th>Estado</th></tr></thead>
+  <tbody>
+    <tr class="month"><td colspan="5">Noviembre 2026</td></tr>
+    <tr data-t="negocio"><td class="date">9–12 nov</td><td><a href="https://websummit.com/en/">Web Summit</a><br><span class="tag">Negocio</span></td><td>Lisboa, presencial</td><td>—</td><td><span class="chip ok">en curso</span></td></tr>
+    <tr data-t="chile coaching"><td class="date">15–16 nov</td><td><a href="https://www.ticketmaster.cl/event/daniel-habif-gira-ascender-el-paso-final-metropolitan-santiago">Daniel Habif · gira "Ascender"</a><br><span class="tag">Desarrollo personal</span><span class="tag">ES</span></td><td>Santiago (15) y Concepción (16)</td><td>Ticketmaster</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">16–22 nov</td><td><a href="https://ecosistemastartup.com/chile-tech-week-200-actividades-para-startups-en-noviembre/">Chile Tech Week</a><br><span class="tag">Startups</span></td><td>Santiago y regiones</td><td>Varía</td><td><span class="chip warn">una sola fuente</span></td></tr>
+    <tr data-t="online coaching chile"><td class="date">17, 19, 24 nov</td><td><a href="https://newfieldconsulting.com/zoom-cdg-liderazgo-conversacional-para-los-desafios-de-hoy/">Newfield · sesiones abiertas por Zoom</a><br><span class="tag">Coaching</span><span class="tag">ES</span></td><td>Online</td><td>Gratis</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">17–18 nov</td><td><a href="https://www.extradigital.es/el-world-business-forum-2026-reunira-a-mas-de-2-000-lideres-empresariales-en-madrid-nac/">World Business Forum Madrid</a><br><span class="tag">Management</span><span class="tag">ES</span></td><td>Madrid, presencial</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">18–19 nov</td><td><a href="https://slush.org/">Slush</a><br><span class="tag">Startups</span></td><td>Helsinki, presencial</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">19–21 nov</td><td><b><a href="https://etmday.org">EtMday 2026 · Emprende tu Mente</a></b><br><span class="tag">Emprendimiento</span><span class="tag">ES</span></td><td>Parque Bicentenario, Vitacura</td><td>Entradas en etmday.org</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">26 nov</td><td><a href="https://me.cl/wp-content/uploads/2026/07/Bases-Legales-Premio-100-Mujeres-Lideres-2026.pdf">Premio 100 Mujeres Líderes</a><br><span class="tag">Liderazgo</span></td><td>Santiago</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr class="month"><td colspan="5">Diciembre 2026</td></tr>
+    <tr data-t="negocio"><td class="date">1–2 dic</td><td><a href="https://storybrand.com/live/">StoryBrand Your Business LIVE · Donald Miller</a><br><span class="tag">Mensaje y marketing</span></td><td>Nashville, presencial</td><td>—</td><td><span class="chip warn">fecha en conflicto (o 10–11)</span></td></tr>
+    <tr data-t="coaching online"><td class="date">4–9 dic</td><td><a href="https://www.tonyrobbins.com/events/date-with-destiny">Date With Destiny · Tony Robbins</a><br><span class="tag">Desarrollo personal</span><span class="tag">ES</span></td><td>Palm Beach + virtual</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">9–10 dic</td><td><a href="https://www.success.events/organizers/alex-hormozi">Scaling Workshop · Alex Hormozi</a><br><span class="tag">Escalar negocio</span></td><td>Las Vegas, presencial</td><td>~US$5.000</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="online coaching negocio"><td class="date">12 dic</td><td><b><a href="https://www.einpresswire.com/article/952663803/tony-robbins-and-dean-graziosi-announce-ai-advantage-live-and-open-pre-orders-for-new-book-the-ai-advantage">AI Advantage LIVE · Robbins + Graziosi</a></b><br><span class="tag">IA y negocio de coaching</span></td><td>Online, ~5 horas</td><td>Gratis</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr class="month"><td colspan="5">Enero a marzo 2027</td></tr>
+    <tr data-t="negocio"><td class="date">6–9 ene</td><td><a href="https://www.ces.tech/press-releases/ces-2027-welcomes-chilean-global-pavilion-presence-for-the-first-time">CES</a> (primer pabellón chileno)<br><span class="tag">Tecnología</span></td><td>Las Vegas</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">11–16 ene</td><td><b><a href="https://www.radioagricultura.cl/noticias/nacional/congreso-futuro-2027-cambia-de-sede-y-ya-tiene-fecha-conoce-las-novedades-de-su-nueva-edicion_20261103/">Congreso Futuro 2027</a></b><br><span class="tag">Ciencia y futuro</span><span class="tag">ES</span></td><td>Santiago (sede nueva por confirmar)</td><td>Históricamente gratis</td><td><span class="chip ok">fecha confirmada</span></td></tr>
+    <tr data-t="online negocio coaching"><td class="date">13–17 ene</td><td><b><a href="https://www.tonyrobbins.com/events/business-mastery">Business Mastery · Tony Robbins</a></b><br><span class="tag">Negocio</span></td><td>Online</td><td>Por postulación (~US$10 mil histórico)</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">22–24 ene</td><td><a href="https://grantcardone.com/events/10x-business-summit-20270416">10X Business Summit · Grant Cardone</a><br><span class="tag">Ventas</span></td><td>Fort Lauderdale</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="coaching"><td class="date">17–23 feb</td><td><a href="https://www.tonyrobbins.com/events/life-and-wealth-mastery-fiji">Life &amp; Wealth Mastery · Tony Robbins</a><br><span class="tag">Desarrollo personal</span></td><td>Fiji, presencial</td><td>—</td><td><span class="chip warn">parcial</span></td></tr>
+    <tr data-t="negocio"><td class="date">1–4 mar</td><td><a href="https://www.mwcbarcelona.com/mwc-barcelona">MWC Barcelona + 4YFN</a><br><span class="tag">Tecnología</span></td><td>Barcelona</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile coaching"><td class="date">desde 8 mar</td><td><a href="https://newfieldconsulting.com/certificacion-coaching-ontologico-empresarial-primer-semestre/">Certificación ABC en Coaching Ontológico · Newfield</a><br><span class="tag">Formación</span><span class="tag">ES</span></td><td>Santiago, híbrido</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">15–21 mar</td><td><a href="https://sxsw.com/2026/south-by-southwest-2027-dates-announced/">SXSW</a><br><span class="tag">Marca y creadores</span></td><td>Austin</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="online coaching"><td class="date">18–21 mar</td><td><b><a href="https://www.tonyrobbins.com/events/unleash-the-power-within/upw-march-2027">Unleash the Power Within · virtual</a></b><br><span class="tag">Desarrollo personal</span><span class="tag">ES</span></td><td>Online</td><td>~US$495 (inglés) / ~US$644 (español), referencia nov-2026</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="coaching"><td class="date">24–30 mar</td><td><a href="https://drjoedispenza.com/advanced-retreats">Retiro de una semana · Joe Dispenza</a><br><span class="tag">Desarrollo personal</span></td><td>Riviera Maya (también may y jun)</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr class="month"><td colspan="5">Abril a junio 2027</td></tr>
+    <tr data-t="negocio online"><td class="date">1–3 abr</td><td><b><a href="https://www.socialmediaexaminer.com/smmworld/volunteer/">Social Media Marketing World</a></b><br><span class="tag">Marketing con contenido</span></td><td>Anaheim + virtual</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">~abril</td><td><a href="https://chocale.cl/2026/03/confirman-las-fechas-y-actividades-del-ecommerce-day-chile-2026/">eCommerce Day Chile</a><br><span class="tag">Comercio digital</span></td><td>Santiago</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="coaching"><td class="date">12–18 abr</td><td><a href="https://events.drjoedispenza.com/retreats/denver-weeklong-retreat/">Retiro de una semana · Joe Dispenza</a><br><span class="tag">Desarrollo personal</span></td><td>Aurora, Denver</td><td>US$2.499</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile empleo online"><td class="date">~mayo</td><td><a href="https://www.laborum.cl">Expo Laborum</a><br><span class="tag">Feria laboral</span><span class="tag">ES</span></td><td>Online</td><td>Gratis</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="coaching"><td class="date">mayo</td><td><a href="https://emccglobal.org/news/emcc-global-conference-is-heading-to-south-korea-may-2027/">EMCC Global Conference</a><br><span class="tag">Coaching</span></td><td>Corea del Sur</td><td>—</td><td><span class="chip warn">sin día</span></td></tr>
+    <tr data-t="coaching"><td class="date">23–25 may</td><td><b><a href="https://coachingfederation.org/community-events/events/icf-converge-summit/">ICF Converge Summit</a></b><br><span class="tag">Coaching</span></td><td>Berlín</td><td>2026: US$890 socio, preventa</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">25–28 may</td><td><a href="https://vancouver.websummit.com/">Web Summit Vancouver</a><br><span class="tag">Tecnología</span></td><td>Vancouver</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">14–17 jun</td><td><b><a href="https://rio.websummit.com/en/">Web Summit Rio</a></b><br><span class="tag">Ecosistema LatAm</span></td><td>Río de Janeiro</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">16–19 jun</td><td><a href="https://dealroom.co/events/vivatech-2027/">VivaTech</a><br><span class="tag">IA y empresas</span></td><td>París</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="empleo"><td class="date">~junio</td><td><a href="https://www.shrm.org/events">SHRM Annual Conference</a><br><span class="tag">Recursos humanos</span></td><td>EE.UU.</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="empleo coaching"><td class="date">~fines de jun</td><td><a href="https://www.ncda.org">NCDA Global Career Development Conference</a><br><span class="tag">Coaching de carrera</span></td><td>EE.UU.</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="negocio"><td class="date">21–25 jun</td><td><a href="https://www.canneslions.com/festival/register-your-interest">Cannes Lions</a><br><span class="tag">Creatividad y marca</span></td><td>Cannes</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="coaching online"><td class="date">25–28 jun</td><td><a href="https://www.tony-robbins-europe.com/unleash-the-power-within">Unleash the Power Within · Europa</a><br><span class="tag">Desarrollo personal</span><span class="tag">ES</span></td><td>Colonia + virtual</td><td>Virtual €499; español +€279</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr class="month"><td colspan="5">Julio a diciembre 2027</td></tr>
+    <tr data-t="chile coaching"><td class="date">~jul-ago</td><td><a href="https://www.icfchile.cl/inicio-1">Congreso Latinoamericano de Coaching · ICF Chile</a><br><span class="tag">Coaching</span><span class="tag">ES</span></td><td>Santiago</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="negocio"><td class="date">23–25 jul</td><td><a href="https://store.grantcardone.com/products/10x-business-summit-2027-july">10X Business Summit · Grant Cardone</a><br><span class="tag">Ventas</span></td><td>Miami</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile empleo"><td class="date">~agosto</td><td><a href="https://www.emol.com/noticias/Tendencias/2026/08/10/1208066/summit-ecosistema-del-trabajo-2026.html">Summit Ecosistema del Trabajo</a><br><span class="tag">Futuro del trabajo</span><span class="tag">ES</span></td><td>Santiago</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="negocio"><td class="date">8–10 sep</td><td><a href="https://unbound.hubspot.com/">UNBOUND (antes INBOUND) · HubSpot</a><br><span class="tag">Marketing y ventas con IA</span></td><td>Boston</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="empleo"><td class="date">~septiembre</td><td><a href="https://www.hrtechnologyconference.com">HR Technology Conference</a><br><span class="tag">Reclutamiento y tecnología</span></td><td>Las Vegas</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="coaching"><td class="date">23–25 sep</td><td><a href="https://www.icfconverge.com/">ICF Converge</a><br><span class="tag">Coaching</span></td><td>Denver</td><td>—</td><td><span class="chip warn">una sola fuente</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">~octubre</td><td><a href="https://www.icare.cl/actividad/xlviii-enade-2026/">ENADE · Icare</a> y Semana de la Pyme<br><span class="tag">Empresa</span><span class="tag">ES</span></td><td>Santiago</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="empleo"><td class="date">~octubre</td><td><a href="https://www.unleash.ai">UNLEASH World</a><br><span class="tag">Recursos humanos</span></td><td>París</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="coaching online"><td class="date">4–7 nov</td><td><a href="https://go.tonyrobbins.com/upw">Unleash the Power Within · Miami</a><br><span class="tag">Desarrollo personal</span><span class="tag">ES probable</span></td><td>Miami (virtual probable)</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">8–11 nov</td><td><a href="https://websummit.com/2-for-1/">Web Summit</a><br><span class="tag">Tecnología</span></td><td>Lisboa</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="chile negocio"><td class="date">~noviembre</td><td><a href="https://etmday.org">EtMday 2027</a><br><span class="tag">Emprendimiento</span><span class="tag">ES</span></td><td>Santiago</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+    <tr data-t="negocio"><td class="date">17–18 nov</td><td><a href="https://wbf.wobi.com/wbf/wbf-nyc/">World Business Forum Nueva York</a><br><span class="tag">Management</span></td><td>Nueva York</td><td>—</td><td><span class="chip ok">confirmado</span></td></tr>
+    <tr data-t="negocio"><td class="date">~noviembre</td><td><a href="https://thinkers50.com/">Thinkers50 Gala</a><br><span class="tag">Management</span></td><td>Londres</td><td>—</td><td><span class="chip warn">sin confirmar</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Para aprender tú como coach de carrera</h3>
+<div class="cols">
+  <div class="box">
+    <h4>Certificaciones de coaching de carrera</h4>
+    <ul>
+      <li>NCDA: Facilitating Career Development (FCD) y Certified Career Services Provider (CCSP). <a href="https://www.ncda.org">ncda.org</a></li>
+      <li>Career Thought Leaders: Certified Career Management Coach (CCMC). <a href="https://careerthoughtleaders.com">careerthoughtleaders.com</a></li>
+      <li>Association of Career Professionals International, red de outplacement y transición de carrera. <a href="https://www.acpinternational.org">acpinternational.org</a></li>
+    </ul>
+    <p class="note">Fechas de cohortes 2027 sin confirmar.</p>
+  </div>
+  <div class="box">
+    <h4>Webinars recurrentes y online</h4>
+    <ul>
+      <li>LinkedIn Talent Connect (anual, parte online). <a href="https://business.linkedin.com/talent-solutions">LinkedIn</a></li>
+      <li>Indeed Hiring Lab: datos y notas semanales. <a href="https://www.hiringlab.org">hiringlab.org</a></li>
+      <li>Webinars gratuitos de Gartner HR y de Josh Bersin. <a href="https://joshbersin.com">joshbersin.com</a></li>
+      <li>Expo Laborum Online: además de buscar trabajo, sirve para ver qué piden hoy las empresas.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="fuentes">
+<h2>Fuentes para seguir</h2>
+<h3>Si solo lees cinco</h3>
+<ol>
+  <li><b><a href="https://ocec.udp.cl">OCEC-UDP</a></b> (mensual): la mejor fuente sobre empleo por edad, sexo y duración de la búsqueda. Habla directo de tu público.</li>
+  <li><b><a href="https://www.df.cl/df-lab">DF Lab</a></b> (diario): startups, fondos, Corfo y capital de riesgo en Chile.</li>
+  <li><b><a href="https://coloroemprendedor.substack.com">Color Emprendedor</a></b> (semanal): calendario de Corfo y Start-Up Chile con anticipación. Sus fechas son previsiones.</li>
+  <li><b><a href="https://www.socialmediatoday.com">Social Media Today</a></b> (diario, en inglés): cada cambio de Instagram y LinkedIn, el día que pasa.</li>
+  <li><b><a href="https://coachingfederation.org/resources/research/global-coaching-study/">ICF Research y blog</a></b>: estudios de mercado, precios, ética e IA en coaching.</li>
+</ol>
+
+<h3>Calendario de datos: cuándo sale cada cifra</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Dato</th><th>Quién</th><th>Cuándo sale</th></tr></thead>
+  <tbody>
+    <tr><td>Desempleo (Encuesta Nacional de Empleo)</td><td><a href="https://www.ine.gob.cl">INE</a></td><td>Mensual, cerca del último día hábil del mes</td></tr>
+    <tr><td>Avisos laborales por internet (IALI)</td><td><a href="https://www.bcentral.cl/contenido/-/details/contenido-general-indice-de-avisos-laborales-de-internet-iali">Banco Central</a></td><td>Mensual, primeros días hábiles</td></tr>
+    <tr><td>Imacec</td><td>Banco Central</td><td>Mensual, cerca del día 1</td></tr>
+    <tr><td>Informe de Política Monetaria (IPoM)</td><td>Banco Central</td><td>Marzo, junio, septiembre y diciembre</td></tr>
+    <tr><td>Despidos por causal</td><td><a href="https://www.dt.gob.cl">Dirección del Trabajo</a></td><td>Mensual, con unos 2,5 meses de rezago</td></tr>
+    <tr><td>Seguro de Cesantía</td><td><a href="https://www.spensiones.cl">Superintendencia de Pensiones</a></td><td>Mensual</td></tr>
+    <tr><td>Empleo en EE.UU.</td><td><a href="https://www.bls.gov">BLS</a></td><td>Primer viernes de cada mes</td></tr>
+    <tr><td>Despidos en EE.UU. (y los atribuidos a IA)</td><td><a href="https://www.challengergray.com">Challenger, Gray &amp; Christmas</a></td><td>Primeros días de cada mes</td></tr>
+    <tr><td>Guías salariales y tendencias de talento</td><td>Randstad (mayo), Michael Page y Marsh (octubre), Robert Half (noviembre)</td><td>Anual</td></tr>
+    <tr><td>Estudio global del coaching</td><td>ICF y PwC</td><td>Cada unos 2 años; el estudio de consumidores salió en octubre 2026</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="cols">
+  <div class="box">
+    <h4>Empleo y talento · Chile</h4>
+    <ul>
+      <li><a href="https://www.ine.gob.cl">INE</a>, <a href="https://www.bcentral.cl">Banco Central</a>, <a href="https://ocec.udp.cl">OCEC-UDP</a>, <a href="https://gobierno.udd.cl">CIPEM-UDD</a>, <a href="https://clapesuc.cl">Clapes UC</a></li>
+      <li><a href="https://cadem.cl">Cadem</a> (estudio Cincuentimeter, julio)</li>
+      <li><a href="https://www.trabajando.cl/informes-de-sueldo">Trabajando.com</a> y <a href="https://www.laborum.cl">Laborum</a> (estudios e índices)</li>
+      <li>Pulso de La Tercera, DF sección Laboral y Personas, <a href="https://rhmanagement.cl">RH Management</a></li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Empleo y talento · mundo</h4>
+    <ul>
+      <li><a href="https://www.gallup.com/workplace">Gallup Workplace</a> (anual)</li>
+      <li><a href="https://economicgraph.linkedin.com">LinkedIn Economic Graph</a></li>
+      <li><a href="https://www.hiringlab.org">Indeed Hiring Lab</a></li>
+      <li><a href="https://www.weforum.org">WEF Future of Jobs</a> (cada unos 2 años, en enero)</li>
+      <li><a href="https://joshbersin.com">Josh Bersin</a> (podcast semanal) y <a href="https://www.shrm.org">SHRM</a></li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Coaching</h4>
+    <ul>
+      <li><a href="https://coachingfederation.org">ICF</a> y <a href="https://www.icfchile.cl/inicio-1">ICF Chile</a></li>
+      <li><a href="https://certifiedcoach.org/">IAC</a> y <a href="https://emccglobal.org/events/">EMCC</a></li>
+      <li><a href="https://coaching-at-work.com/">Coaching at Work</a> (bimestral) y la revista choice (trimestral)</li>
+      <li><a href="https://www.instituteofcoaching.org/ioc-latest">Institute of Coaching</a> (McLean y Harvard): investigación y webinars</li>
+      <li><a href="https://newfieldconsulting.com">Newfield</a>: agenda local</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Emprendimiento y fondos · Chile</h4>
+    <ul>
+      <li><a href="https://www.corfo.gob.cl">Corfo</a>, <a href="https://startupchile.org">Start-Up Chile</a>, <a href="https://www.sercotec.cl">Sercotec</a> (suscribirse a sus alertas)</li>
+      <li><a href="https://legales.cooperativa.cl">Avisos legales de Cooperativa</a>: a veces publican las aperturas de Corfo antes que la prensa</li>
+      <li><a href="https://ecosistemastartup.com">Ecosistema Startup</a> (contrastar sus cifras), <a href="https://portalinnova.cl">Portal Innova</a>, <a href="https://revistaemprende.cl">Revista Emprende</a></li>
+      <li><a href="https://acafi.cl">ACAFI</a>, <a href="https://acvc.cl">ACVC</a>, <a href="https://lavca.org/research/">LAVCA</a>, <a href="https://endeavor.cl">Endeavor Chile</a></li>
+      <li><a href="https://luma.com">Luma</a>, filtrando por Santiago: meetups reales del ecosistema</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Estrategia y negocio (en inglés)</h4>
+    <ul>
+      <li>HBR e IdeaCast, MIT Sloan Management Review, McKinsey, BCG</li>
+      <li>Stratechery (estrategia de plataformas e IA)</li>
+      <li>Exponential View (IA, economía y organizaciones)</li>
+      <li>Acquired (estrategia de empresas a fondo)</li>
+      <li>Morning Brew (resumen diario de negocios)</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h4>Marca personal y ventas</h4>
+    <ul>
+      <li><i>The Game</i> (Alex Hormozi): ofertas, precio y ventas de alto valor</li>
+      <li>Justin Welsh: negocio de una persona en LinkedIn</li>
+      <li>Sahil Bloom, Marketing Examples, My First Million</li>
+      <li><i>The Diary of a CEO</i>: referente de formato de entrevista</li>
+      <li>En español: Itnig, Product Hackers, LatamList</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="sistema">
+<h2>Cómo sigue este informe</h2>
+<ul>
+  <li><b>Cada día 1 del mes</b> te llega por correo el informe del mes anterior, con un resumen corto y el link a la página completa. Lo arma una tarea programada que investiga desde cero cada vez.</li>
+  <li><b>Misma estructura</b> que este: lo clave del mes, próximas fechas, Parte A (reenfoque, empleabilidad y coaching), Parte B (estrategia, negocio y emprendimiento), fondos, agenda de eventos y fuentes.</li>
+  <li><b>Cada mes</b> actualiza las cifras que salieron (INE, IALI, despidos, BLS, Challenger), confirma las fechas que hoy están "sin confirmar" y agrega los fondos que cierran en los 60 días siguientes.</li>
+</ul>
+<h3>Quedó pendiente para el próximo informe</h3>
+<ul>
+  <li>Qué publicaron este período las firmas de headhunting (Korn Ferry, Egon Zehnder, Spencer Stuart, Heidrick, Amrop).</li>
+  <li>Datos internacionales de LinkedIn Economic Graph, Indeed, WEF y Glassdoor sobre cambios de carrera a mitad de la vida y empleabilidad 50+.</li>
+  <li>Eventos en español de Latinoamérica y España (Endeavor, eMerge Americas, Expansión Summit, DMX, Congreso Emprendedores).</li>
+  <li>Aceleradoras privadas (Wayra, Magical, Imagine Lab, Founder Institute, 500 Global) y fondos para mujeres (Mujer Emprende, BancoEstado Crece Mujer).</li>
+  <li>Si Chile está entre los países con publicidad en ChatGPT.</li>
+</ul>
+<p class="note">Cómo se hizo: búsqueda web del 10-11-2026 en cuatro frentes, priorizando fuentes oficiales y medios con fecha. Algunos sitios oficiales (INE, Corfo, ICF, tonyrobbins.com) no se pudieron abrir directamente desde este entorno, así que varias cifras vienen de notas de prensa que citan esas fuentes. Lo que no se pudo confirmar está marcado.</p>
+</section>
+
+<footer>Informe de actualización N.º 1 · Noviembre 2026 · Preparado para uso interno.</footer>
+</main>
+</div>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filters button');
+  var rows = document.querySelectorAll('#ev tbody tr');
+  function apply(f){
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.f === f ? 'true' : 'false'); });
+    var monthRow = null, monthHas = false;
+    rows.forEach(function(r){
+      if (r.classList.contains('month')){
+        if (monthRow) monthRow.hidden = !monthHas;
+        monthRow = r; monthHas = false; return;
+      }
+      var show = f === 'all' || (r.dataset.t || '').split(' ').indexOf(f) !== -1;
+      r.hidden = !show;
+      if (show) monthHas = true;
+    });
+    if (monthRow) monthRow.hidden = !monthHas;
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ apply(b.dataset.f); }); });
+})();
+</script>
+</body>
+</html>
