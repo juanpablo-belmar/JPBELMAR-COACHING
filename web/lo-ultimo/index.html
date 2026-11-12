@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lo último en Empleabilidad, Negocios y Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: página índice de una sola columna. Arriba, la caja grande del mes más reciente; abajo, una grilla con los meses anteriores. Misma paleta y tipografía que los informes. */
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#121417; --muted:#545B66; --line:#DDE1E7;
+  --heading:#1B3A5C; --accent:#E5A91E; --accent-ink:#8A5E00; --onyx:#0A0A0A;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0A0A; --surface:#13161B; --ink:#E9EBEE; --muted:#A3AAB5; --line:#262B33;
+    --heading:#9DBBDD; --accent:#E5A91E; --accent-ink:#F0BE4A; --onyx:#000000; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0A0A; --surface:#13161B; --ink:#E9EBEE; --muted:#A3AAB5; --line:#262B33;
+  --heading:#9DBBDD; --accent:#E5A91E; --accent-ink:#F0BE4A; --onyx:#000000; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.6}
+a{color:var(--heading);text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.hero{background:var(--onyx);color:#F3F4F6;padding:56px 0 48px;border-bottom:3px solid var(--accent)}
+.hero .eyebrow{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:46px;line-height:1.1;margin:0 0 16px;letter-spacing:-.01em;text-wrap:balance;color:#FFFFFF;max-width:20ch}
+.hero h1 span{color:var(--accent)}
+.hero p{max-width:62ch;margin:0;color:#C9CED6;font-size:19px}
+.hero .who{font-family:var(--font-display);font-size:14px;color:#9AA3AF;margin-top:20px}
+.pillars{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:26px}
+.pillar{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:15px;color:#F3F4F6}
+.pillar svg{width:34px;height:34px;flex:none}
+.ico{width:18px;height:18px;vertical-align:-3px;margin-right:6px;flex:none}
+.side h3{display:flex;align-items:center}
+main.wrap{padding:40px 20px 72px}
+.label{font-family:var(--font-display);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 12px}
+.featured{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:8px;padding:28px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px}
+@media (max-width:820px){.featured{grid-template-columns:minmax(0,1fr);gap:20px;padding:22px}.hero h1{font-size:34px}}
+.featured h2{font-family:var(--font-display);color:var(--heading);font-weight:800;font-size:36px;line-height:1.1;margin:0 0 4px;text-wrap:balance}
+.featured .num{font-family:var(--font-display);font-size:14px;color:var(--muted);margin:0 0 18px}
+.featured ul{margin:0;padding-left:1.1em}
+.featured li{margin:8px 0;max-width:60ch}
+.side{display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line);padding-left:28px}
+@media (max-width:820px){.side{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:18px}}
+.side h3{font-family:var(--font-display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0}
+.dates{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-family:var(--font-display);font-size:15px;line-height:1.35}
+.dates b{color:var(--heading);font-variant-numeric:tabular-nums;display:inline-block;min-width:92px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--font-display);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.btn{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:16px;background:var(--heading);color:var(--surface);text-decoration:none;padding:12px 18px;border-radius:6px;align-self:flex-start}
+.btn:hover{filter:brightness(1.1)}
+.example-tag{font-family:var(--font-display);font-size:11px;font-weight:800;letter-spacing:.06em;background:#FBEFD3;color:#7A5200;padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:8px}
+section.prev{margin-top:48px}
+section.prev h2{font-family:var(--font-display);color:var(--heading);font-size:24px;font-weight:800;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--accent)}
+.card .m{font-family:var(--font-display);font-weight:800;font-size:20px;color:var(--heading)}
+.card .n{font-family:var(--font-display);font-size:13px;color:var(--muted)}
+.card p{margin:0;font-size:16px;line-height:1.45}
+.empty{font-size:16px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:18px;margin:0}
+.demo{margin-top:40px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--font-display);font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+.demo button{font-family:var(--font-display);font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.demo button[aria-pressed="true"]{background:var(--heading);color:var(--surface);border-color:var(--heading)}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;font-family:var(--font-display);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-empleo" viewBox="0 0 32 32"><rect x="4" y="10" width="24" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10V7.5A1.5 1.5 0 0 1 13.5 6h5A1.5 1.5 0 0 1 20 7.5V10M4 17h24M15 17v3h2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-negocio" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20.5 11.5l-2.8 6.2-6.2 2.8 2.8-6.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="16" cy="16" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-coaching" viewBox="0 0 32 32"><path d="M5 8.5A2.5 2.5 0 0 1 7.5 6h11A2.5 2.5 0 0 1 21 8.5v6a2.5 2.5 0 0 1-2.5 2.5H12l-4 3.5V17h-.5A2.5 2.5 0 0 1 5 14.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 12h.5A2.5 2.5 0 0 1 27 14.5v6a2.5 2.5 0 0 1-2.5 2.5H24v3.5L20 23h-5.5A2.5 2.5 0 0 1 12 20.5V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fecha" viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 13h22M11 4v6M21 4v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10" y="17" width="4" height="4" rx="1" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Recursos · se actualiza cada mes</p>
+    <h1>Lo último en <span>Empleabilidad, Negocios y Coaching</span></h1>
+    <p>Cada mes reviso qué está pasando con el trabajo, los negocios y el coaching, en Chile y en el mundo. Lo ordeno en un informe para que no tengas que buscarlo tú: las cifras que importan, las fechas de fondos y eventos, y las fuentes que vale la pena seguir.</p>
+    <div class="pillars" aria-label="Temas">
+      <span class="pillar"><svg style="color:var(--accent)" aria-hidden="true"><use href="#i-empleo"/></svg>Empleabilidad</span>
+      <span class="pillar"><svg style="color:var(--accent)" aria-hidden="true"><use href="#i-negocio"/></svg>Negocios</span>
+      <span class="pillar"><svg style="color:var(--accent)" aria-hidden="true"><use href="#i-coaching"/></svg>Coaching</span>
+    </div>
+    <p class="who">Juan Pablo Belmar · Consultor en Diseño y Estrategia de Negocios · IAC Certified Coach™</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="label">Lo más reciente</p>
+  <div id="featured"></div>
+
+  <section class="prev" aria-labelledby="prev-title">
+    <h2 id="prev-title">Meses anteriores</h2>
+    <div id="grid"></div>
+  </section>
+
+  <div class="demo">
+    <span>Vista previa para ti:</span>
+    <button type="button" id="demo-btn" aria-pressed="false">Ver cómo se verá con 3 meses</button>
+    <span id="demo-note"></span>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Juan Pablo Belmar · juanpablobelmar.com</span>
+    <span>¿Estás pensando en un cambio de trabajo? <a href="https://juanpablobelmar.com/reenfoque">Así funciona Reenfoque Profesional</a></span>
+  </div>
+</footer>
+
+<script>
+/* Cada mes, la tarea programada agrega UN objeto al principio de esta lista. El primero se muestra como caja grande; el resto, en "Meses anteriores". */
+var INFORMES = [
+  {
+    mes: "Noviembre 2026",
+    numero: 1,
+    url: "2026-11/",
+    periodo: "Agosto a noviembre 2026",
+    puntos: [
+      "El desempleo en Chile llegó a 9,8%, el más alto desde 2021; en mujeres es 10,5%.",
+      "No hay una ola de despidos: hay sequía de contratación. Los avisos de empleo online caen 12,6%.",
+      "Las búsquedas se alargan: los mayores de 50 tardan 10 a 11 meses en recolocarse.",
+      "El coaching tiene interés pero convierte poco: 56% ha pensado contratarlo y solo 17% lo ha hecho.",
+      "En las empresas, la IA da resultados solo cuando se rediseña el trabajo."
+    ],
+    fechas: [
+      ["19–21 nov", "EtMday, Emprende tu Mente"],
+      ["24 nov", "Cierra Start-Up Chile BIG13"],
+      ["12 dic", "AI Advantage LIVE (online, gratis)"],
+      ["11–16 ene", "Congreso Futuro"]
+    ],
+    temas: ["Empleabilidad", "Coaching", "Estrategia", "Fondos", "Eventos"],
+    resumen: "Desempleo en 9,8%, búsquedas más largas, el coaching frente a la IA y la ventana de fondos de fin de año."
+  }
+];
+
+var EJEMPLOS = [
+  { mes: "Enero 2027", numero: 3, url: "#", periodo: "Diciembre 2026", ejemplo: true,
+    puntos: ["Así se verá la caja del mes más reciente cuando llegue enero.", "Arriba siempre queda el último informe.", "Noviembre y diciembre bajan a “Meses anteriores”."],
+    fechas: [["—", "Fechas del mes que viene"]], temas: ["Empleabilidad", "Negocios", "Coaching"],
+    resumen: "Ejemplo de cómo se ve un mes en la grilla." },
+  { mes: "Diciembre 2026", numero: 2, url: "#", periodo: "Noviembre 2026", ejemplo: true,
+    puntos: [], fechas: [], temas: [], resumen: "Ejemplo: aquí irá el resumen de una línea de diciembre." }
+];
+
+function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+
+function render(lista){
+  var f = lista[0];
+  var tag = f.ejemplo ? '<span class="example-tag">EJEMPLO</span>' : '';
+  document.getElementById('featured').innerHTML =
+    '<article class="featured">' +
+      '<div>' +
+        '<h2>' + esc(f.mes) + tag + '</h2>' +
+        '<p class="num">Informe N.º ' + f.numero + ' · ' + esc(f.periodo) + '</p>' +
+        '<ul>' + f.puntos.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' +
+      '</div>' +
+      '<div class="side">' +
+        '<h3><svg class="ico" style="color:var(--accent-ink)" aria-hidden="true"><use href="#i-fecha"/></svg>Fechas que vienen</h3>' +
+        '<ul class="dates">' + f.fechas.map(function(d){ return '<li><b>' + esc(d[0]) + '</b> ' + esc(d[1]) + '</li>'; }).join('') + '</ul>' +
+        '<div class="chips">' + f.temas.map(function(t){ return '<span class="chip">' + esc(t) + '</span>'; }).join('') + '</div>' +
+        '<a class="btn" href="' + f.url + '">Leer el informe completo</a>' +
+      '</div>' +
+    '</article>';
+
+  var resto = lista.slice(1);
+  var g = document.getElementById('grid');
+  if (!resto.length){
+    g.innerHTML = '<p class="empty">Aquí se irán sumando los meses anteriores. El próximo informe sale el 1 de diciembre.</p>';
+    return;
+  }
+  g.innerHTML = '<div class="grid">' + resto.map(function(r){
+    var t = r.ejemplo ? '<span class="example-tag">EJEMPLO</span>' : '';
+    return '<a class="card" href="' + r.url + '">' +
+      '<span class="m">' + esc(r.mes) + t + '</span>' +
+      '<span class="n">Informe N.º ' + r.numero + ' · ' + esc(r.periodo) + '</span>' +
+      '<p>' + esc(r.resumen) + '</p>' +
+    '</a>';
+  }).join('') + '</div>';
+}
+
+render(INFORMES);
+
+var btn = document.getElementById('demo-btn');
+btn.addEventListener('click', function(){
+  var on = btn.getAttribute('aria-pressed') !== 'true';
+  btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  btn.textContent = on ? 'Volver a la vista real' : 'Ver cómo se verá con 3 meses';
+  document.getElementById('demo-note').textContent = on ? 'Enero y diciembre son ejemplos.' : '';
+  render(on ? EJEMPLOS.concat(INFORMES) : INFORMES);
+});
+</script>
+</body>
+</html>
